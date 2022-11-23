@@ -1,0 +1,5 @@
+{
+    "sketch": "Sensor_Water_Temperature\\Sensor_Water_Temperature.ino",
+    "board": "arduino:avr:uno",
+    "port": "COM15"
+}

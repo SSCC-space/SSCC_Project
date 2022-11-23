@@ -1,0 +1,13 @@
+python에서 requests로 Get, Post API 통신하기
+https://sagittariusof85s.tistory.com/266
+
+
+리눅스 mysql 계정, DB 생성하기
+https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=sh_park0107&logNo=130179291189
+콘솔에서 mysql 접속 방법
+https://code-factory.tistory.com/44
+
+  MySQL ERROR 2003 (HY000): Can't connect to MySQL server on
+https://zetawiki.com/wiki/MySQL_ERROR_2003_(HY000):_Can't_connect_to_MySQL_server_on
+라즈베리파이를 외부에서 SSH 접속 및 원격 Remote 접속 가능하게 설정하는법   		
+https://codedosa.com/468

@@ -1,0 +1,20 @@
+vscode에서 아두이노 개발하기
+https://xenostudy.tistory.com/533
+
+Arduino와 DS18B20 1-Wire 디지털 온도 센서 인터페이스, 온도표시
+https://fishpoint.tistory.com/5705
+
+pH센서 연결
+http://vctec.co.kr/product/%EC%95%84%EB%91%90%EC%9D%B4%EB%85%B8-ph-%EC%B8%A1%EC%A0%95-%EC%84%BC%EC%84%9C-ph-sensor/12133/
+
+아두이노 라즈베리파이 시리얼통신
+https://manli000.wordpress.com/2016/02/12/%EB%9D%BC%EC%A6%88%EB%B2%A0%EB%A6%AC%ED%8C%8C%EC%9D%B4-%EC%95%84%EB%91%90%EC%9D%B4%EB%85%B8-%EC%8B%9C%EB%A6%AC%EC%96%BC-%ED%86%B5%EC%8B%A0/
+
+아두이노 라즈베리파이 시리얼통신 코드
+https://makeit402.blogspot.com/2017/08/serial-communication-between-python-and.html
+
+이상한 출력 값 오류 해결 (b'[value]\r\n')
+https://stackoverflow.com/questions/31529421/weird-output-value-bvalue-r-n-python-serial-read
+
+라즈베리파이에서 아두이노 값을 읽고 DB저장
+https://bebutae.tistory.com/104
