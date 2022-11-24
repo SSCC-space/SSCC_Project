@@ -26,21 +26,8 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 
 templates = Jinja2Templates(directory="templates")
 
-@app.get("/", response_class=HTMLResponse)
-# , ncnt_people: str, current_time: str, standard_time: str):
-async def Page(request: Request):
-    # check()
-    temp, hum, lamp, ncnt_people, standard_time = "Testing", "Testing", "Testing", 100, "Testing"
-    current_time = str(datetime.now() )[0:21] + " (Developing)"  # 필요한 부분 가공
-    if ncnt_people <= 6:
-        countable = 1
-    else:
-        countable = 0
-    # FastAPI로 new.html에 변수 값 전달
-    return templates.TemplateResponse("index(Ver_7).html", {"request": request, "temperature": temp, "humidity": hum, "lamp": lamp,"people_count": ncnt_people, "countable": countable, "last_time": current_time, "get_time": current_time})
-
-@app.get("/nCnt")
-async def nCnt():
+@app.get("/SSCC_INFO")
+async def POST_Sensor():
     # check()
     temp, hum, lamp, ncnt_people, standard_time = 0, 0, 0, 0, "Testing"
     current_time = str(datetime.now() )[0:21]  # 필요한 부분 가공
