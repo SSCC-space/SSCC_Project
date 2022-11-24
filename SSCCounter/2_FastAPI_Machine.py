@@ -33,8 +33,12 @@ async def Page(request: Request):
     temp, hum, lamp, ncnt_people, standard_time = "Testing", "Testing", "Testing", 4, "Testing"
     current_time = datetime.now()  # 실시간 시간 측정
     current_time = str(current_time)[0:21]  # 필요한 부분 가공
+    if ncnt_people <= 6:
+        countable = 1
+    else:
+        countable = 0
     # FastAPI로 new.html에 변수 값 전달
-    return templates.TemplateResponse("index(ver_6)_adivse-2.html", {"request": request, "temperature": temp, "humidity": hum, "lamp": lamp,"people_count": ncnt_people, "last_time": current_time, "get_time": current_time})
+    return templates.TemplateResponse("index(Ver_7).html", {"request": request, "temperature": temp, "humidity": hum, "lamp": lamp,"people_count": ncnt_people, "countable": countable, "last_time": current_time, "get_time": current_time})
 
 @app.get("/nCnt")
 async def nCnt():
