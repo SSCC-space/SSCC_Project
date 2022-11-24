@@ -1,19 +1,9 @@
 # ============ Set ============
 
 #  -*- coding: utf-8 -*-
-from fastapi import FastAPI
+from fastapi import FastAPI, File, UploadFile
 from fastapi.templating import Jinja2Templates
 from datetime import datetime
-
-# ============ Function ============
-# def check():
-#     global ncnt_people, standard_time
-#     with open("nCnt.txt", "r") as file:
-#         for line in file.readlines():
-#             info_list = line.split("/")
-#             ncnt_people = info_list[0]
-#             standard_time = info_list[1]
-#             print("\n", line, "\n")
 
 # ============ Machine ============
 
@@ -21,6 +11,14 @@ from datetime import datetime
 app = FastAPI()
 
 templates = Jinja2Templates(directory="templates")
+
+@app.post("/files/")
+async def create_file(file: bytes = File()):
+    return {"file_size": len(file)}
+
+@app.post("/uploadfile/")
+async def create_upload_file(file: UploadFile):
+    return {"filename": file.filename}
 
 @app.get("/SSCC_INFO")
 async def POST_Sensor():
