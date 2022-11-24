@@ -30,7 +30,7 @@ templates = Jinja2Templates(directory="templates")
 # , ncnt_people: str, current_time: str, standard_time: str):
 async def Page(request: Request):
     # check()
-    temp, hum, lamp, ncnt_people, standard_time = "Testing", "Testing", "Testing", "Testing", "Testing"
+    temp, hum, lamp, ncnt_people, standard_time = "Testing", "Testing", "Testing", 4, "Testing"
     current_time = datetime.now()  # 실시간 시간 측정
     current_time = str(current_time)[0:21]  # 필요한 부분 가공
     # FastAPI로 new.html에 변수 값 전달
