@@ -6,6 +6,11 @@ from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from datetime import datetime
+import requests
+
+url = "http://114.71.48.94:8080/nCnt"
+
+data = requests.get(url).json()
 
 # ============ Function ============
 # def check():
