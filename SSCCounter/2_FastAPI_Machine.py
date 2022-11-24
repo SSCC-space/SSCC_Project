@@ -30,9 +30,8 @@ templates = Jinja2Templates(directory="templates")
 # , ncnt_people: str, current_time: str, standard_time: str):
 async def Page(request: Request):
     # check()
-    temp, hum, lamp, ncnt_people, standard_time = "Testing", "Testing", "Testing", 4, "Testing"
-    current_time = datetime.now()  # 실시간 시간 측정
-    current_time = str(current_time)[0:21]  # 필요한 부분 가공
+    temp, hum, lamp, ncnt_people, standard_time = "Testing", "Testing", "Testing", "Dev", "Testing"
+    current_time = str(datetime.now() )[0:21] + "Developing"  # 필요한 부분 가공
     if ncnt_people <= 6:
         countable = 1
     else:
@@ -44,7 +43,6 @@ async def Page(request: Request):
 async def nCnt():
     # check()
     temp, hum, lamp, ncnt_people, standard_time = 0, 0, 0, 0, "Testing"
-    current_time = datetime.now()  # 실시간 시간 측정
-    current_time = str(current_time)[0:21]  # 필요한 부분 가공
+    current_time = str(datetime.now() )[0:21]  # 필요한 부분 가공
     print(ncnt_people)
     return {"temperature": temp, "humidity": hum, "lamp": lamp,"people_count": ncnt_people, "last_time": current_time, "get_time": standard_time}
