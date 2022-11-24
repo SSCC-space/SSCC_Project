@@ -10,32 +10,23 @@ import requests
 
 url = "http://114.71.48.94:8080/nCnt"
 
-data = requests.get(url).json()
+def check():
+    global People_Number, Measure_Time, Temperature, Humidity, Lamp
+    data = requests.get(url).json()
+    People_Number = data['People_Number']
+    Measure_Time = data['Measure_Time']
+    Temperature = data['Temperature']
+    Humidity = data['Humidity']
+    Lamp = data['Lamp']
 
-# ============ Function ============
-# def check():
-#     global ncnt_people, standard_time
-#     with open("nCnt.txt", "r") as file:
-#         for line in file.readlines():
-#             info_list = line.split("/")
-#             ncnt_people = info_list[0]
-#             standard_time = info_list[1]
-#             print("\n", line, "\n")
-
-# ============ Machine ============
-
-# 웹 출력
 app = FastAPI()
-
 app.mount("/static", StaticFiles(directory="static"), name="static")
-
 templates = Jinja2Templates(directory="templates")
-
 @app.get("/", response_class=HTMLResponse)
-# , ncnt_people: str, current_time: str, standard_time: str):
+
 async def Page(request: Request):
-    # check()
-    temp, hum, lamp, ncnt_people, standard_time = "Testing", "Testing", "Testing", 100, "Testing"
+    global People_Number, Measure_Time, Temperature, Humidity, Lamp
+    check()
     current_time = str(datetime.now() )[0:21] + " (Developing)"  # 필요한 부분 가공
     if ncnt_people <= 6:
         countable = 1
