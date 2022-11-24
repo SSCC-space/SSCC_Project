@@ -24,7 +24,7 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
 @app.get("/", response_class=HTMLResponse)
 
-async def Page(request: Request):
+async def Page(request: Request): 
     global People_Number, Measure_Time, Temperature, Humidity, Lamp
     check()
     current_time = str(datetime.now() )[0:21] + " (Developing)"  # 필요한 부분 가공
