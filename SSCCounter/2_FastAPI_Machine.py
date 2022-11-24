@@ -34,7 +34,7 @@ async def Page(request: Request):
     current_time = datetime.now()  # 실시간 시간 측정
     current_time = str(current_time)[0:21]  # 필요한 부분 가공
     # FastAPI로 new.html에 변수 값 전달
-    return templates.TemplateResponse("index(ver_5)_advise-1.html", {"request": request, "temperature": temp, "humidity": hum, "lamp": lamp,"people_count": ncnt_people, "last_time": current_time, "get_time": current_time})
+    return templates.TemplateResponse("index(ver_6)_adivse-2.html", {"request": request, "temperature": temp, "humidity": hum, "lamp": lamp,"people_count": ncnt_people, "last_time": current_time, "get_time": current_time})
 
 @app.get("/nCnt")
 async def nCnt():
