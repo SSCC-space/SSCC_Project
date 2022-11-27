@@ -1,7 +1,4 @@
 # -*- coding: utf-8 -*-
-
-# ============ Set ============
-
 import cv2
 from datetime import datetime
 
@@ -19,10 +16,10 @@ def Cam():
             ret, frame = cap.read()
             if ret:
                 if cv2.waitKey(1) == -1:
-                    roi = frame[y:y+h, x:x+w]   # 관심영역 지정
-                    roi = cv2.blur(roi, (Blur_Size, Blur_Size)) # 블러(모자이크) 처리
-                    frame[y:y+h, x:x+w] = roi   # 원본 이미지에 적용
-                    cv2.imwrite('photo.jpg', frame)  # 이미지 저장
+                    roi = frame[y:y+h, x:x+w]                    # 관심영역 지정
+                    roi = cv2.blur(roi, (Blur_Size, Blur_Size))  # 블러(모자이크) 처리
+                    frame[y:y+h, x:x+w] = roi                    # 원본 이미지에 적용
+                    cv2.imwrite('photo.jpg', frame)              # 이미지 저장
                     break
             else:
                 print('no frame')
@@ -35,5 +32,5 @@ def Cam():
 Cam()
 Measure_Time = str(datetime.now())[0:21]
 
-img = "photo.jpg"  # 이미지 경로
+img = "photo.jpg"        # 이미지 경로
 frame = cv2.imread(img)  # 이미지 읽어오기
