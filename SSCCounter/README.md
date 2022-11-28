@@ -3,6 +3,12 @@
 페이지: http://114.71.48.94:8080/
 ![KakaoTalk_20221103_184645849](https://user-images.githubusercontent.com/101448204/199691235-d91cf775-9c23-40be-a4ee-d3929acb33bd.jpg)
 
+11/28
+  - 머신 정상화, 베타 버전 배포
+
+11/26 ~ 28
+  - 이미지 파일 서버에 전송 설정
+
 11/25
   - 웹페이지 header 부분 수정
     - nav 추가
