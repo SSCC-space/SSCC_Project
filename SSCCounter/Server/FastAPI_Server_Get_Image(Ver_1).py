@@ -3,7 +3,7 @@ import os
 import sys
 
 clientSock = socket(AF_INET, SOCK_STREAM)
-clientSock.connect(('127.0.0.1', 8080))
+clientSock.connect(('114.71.48.94', 8080)) # '127.0.0.1', 8080))
 
 print('연결에 성공했습니다.')
 filename = input('전송할 파일 이름을 입력하세요: ')
