@@ -1,6 +1,6 @@
 import requests
 
-files = open('메일 오류.png', 'rb')
+files = open('photo.jpg', 'rb')
 
 upload = {'file': files}
 
