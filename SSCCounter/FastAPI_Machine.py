@@ -37,7 +37,7 @@ async def Page(request: Request):
     else:
         countable = 0
     # FastAPI로 new.html에 변수 값 전달
-    return templates.TemplateResponse("index(Ver_7).html", {"request": request, "temperature": temp, "humidity": hum, "lamp": lamp,"people_count": ncnt_people, "countable": countable, "last_time": current_time, "get_time": current_time})
+    return templates.TemplateResponse("index(Ver_7).html", {"request": request, "temperature": temp, "humidity": hum, "lamp": lamp,"People_Count": ncnt_people, "countable": countable, "last_time": current_time, "get_time": current_time})
 
 @app.get("/nCnt")
 async def nCnt():
