@@ -1,1 +1,1 @@
-CPU/MainBoard/Cooler/Ram/SSD/Power/Case
+CPU/MainBoard/CPU_Cooler/Ram/SSD/Power/Case
