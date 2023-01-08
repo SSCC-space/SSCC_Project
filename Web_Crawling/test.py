@@ -1,6 +1,7 @@
-import pandas as pd
+# import pandas as pd
 
-filename = "PRoduct.xlsx"
-df = pd.read_excel(filename, engine='openpyxl')
+# filename = "Product.xlsx"
+# df = pd.read_excel(filename, engine='openpyxl')
 
-print(df)
+
+# print(df.shape)
