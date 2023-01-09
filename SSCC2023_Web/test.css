@@ -1,8 +1,12 @@
 :root {
   --text-color: #f0f4f5;
-  --background-color: #263343;
+  --background-color: rgb(38, 51, 67);
+  /* --background-color: #263343; */
   --accent-color:	white;
   /* --accent-color:	rgb(255,165,0); */
+  --hober-color: rgb(76, 90, 105);
+  /* --hober-color: rgb(146, 153, 161); */
+  /* --hober-color: #6d7278; */
   --icons-color: rgb(152, 187, 201);
   --bodybackground-color: lightgray;
 }
@@ -49,13 +53,14 @@ a {
 }
 
 .navbar__menu li:hover {
-  background-color: var(--accent-color);
+  background-color: var(--hober-color);
   border-radius: 3px;
 }
 
 .navbar__icons {
   list-style: none;
-  display: flex;
+  display: None;
+  /* display: flex; */
   color: var(--icons-color);
   margin: 0;
   padding-left: 0;
