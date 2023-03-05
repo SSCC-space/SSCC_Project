@@ -1,28 +1,36 @@
+#  -*- coding: utf-8 -*-
 from socket import *
-import os
+from os.path import exists
 import sys
 
-clientSock = socket(AF_INET, SOCK_STREAM)
-clientSock.connect(('114.71.48.94', 8080)) # '127.0.0.1', 8080))
 
-print('연결에 성공했습니다.')
-filename = input('전송할 파일 이름을 입력하세요: ')
-clientSock.sendall(filename.encode('utf-8'))
+def Post_Image():
+    serverSock = socket(AF_INET, SOCK_STREAM)
+    serverSock.bind(('', 8080))
+    serverSock.listen(1)
 
-data = clientSock.recv(1024)
-data_transferred = 0
+    connectionSock, addr = serverSock.accept()
 
-if not data:
-    print('파일 %s 가 서버에 존재하지 않음' %filename)
-    sys.exit()
+    print(str(addr),'에서 접속했습니다')
 
-nowdir = os.getcwd()
-with open(nowdir+"\\"+filename, 'wb') as f: #현재dir에 filename으로 파일을 받는다
-    try:
-        while data: #데이터가 있을 때까지
-            f.write(data) #1024바이트 쓴다
-            data_transferred += len(data)
-            data = clientSock.recv(1024) #1024바이트를 받아 온다
-    except Exception as ex:
-        print(ex)
-print('파일 %s 받기 완료. 전송량 %d' %(filename, data_transferred))
+    filename = connectionSock.recv(1024) #클라이언트한테 파일이름(이진 바이트 스트림 형태)을 전달 받는다
+    print('받은 데이터 : ', filename.decode('utf-8')) #파일 이름을 일반 문자열로 변환한다
+    data_transferred = 0
+
+    if not exists(filename):
+        print("no file")
+        sys.exit()
+
+    print("파일 %s 전송 시작" %filename)
+    with open(filename, 'rb') as f:
+        try:
+            data = f.read(1024) #1024바이트 읽는다
+            while data: #데이터가 없을 때까지
+                data_transferred += connectionSock.send(data) #1024바이트 보내고 크기 저장
+                data = f.read(1024) #1024바이트 읽음
+        except Exception as ex:
+            print(ex)
+    print("전송완료 %s, 전송량 %d" %(filename, data_transferred))
+
+while True:
+    Post_Image()
