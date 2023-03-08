@@ -1,40 +1,33 @@
-import cv2
 import requests
+import time
+import cv2
+import numpy as np
 
-# 동영상 촬영 기간(초)
-RECORDING_TIME = 10
+url = 'http://114.71.48.94:80/uploadfile'
+filename = 'photo.jpg'
+while True:
+    cap = cv2.VideoCapture(0)
+    if cap.isOpened():
+        while True:
+            ret, frame = cap.read()
+            if ret:
+                if cv2.waitKey(1) == -1:
+                    fliped = cv2.flip(frame, -1)
+                    cv2.imwrite('photo.jpg', fliped)  # 이미지 저장
+                    break
+            else:
+                print('no frame')
+                break
+    else:
+        print('no camera!')
+    cap.release()
+    img = "photo.jpg"  # 이미지 경로
+    
 
-# 동영상 저장 경로 및 파일명
-VIDEO_PATH = "./video.avi"
+    with open(filename, 'rb') as f:
+        r = requests.post(url, files={'file': f})
 
-# 카메라 객체 생성
-cap = cv2.VideoCapture(0)
+    print(r.text)
+    time.sleep(0.3)
 
-# 동영상 저장용 객체 생성
-fourcc = cv2.VideoWriter_fourcc(*'XVID')
-out = cv2.VideoWriter(VIDEO_PATH, fourcc, 20.0, (640, 480))
 
-# 카메라로부터 동영상 촬영
-for i in range(0, RECORDING_TIME * 20):
-    # 프레임 읽기
-    ret, frame = cap.read()
-    if ret:
-        # 화면 출력
-        cv2.imshow('frame', frame)
-
-        # 동영상 저장
-        out.write(frame)
-
-        # 1/20초마다 프레임 촬영
-        key = cv2.waitKey(50)
-        if key == ord('q'):
-            break
-
-# 객체 해제
-cap.release()
-out.release()
-cv2.destroyAllWindows()
-
-# 저장된 동영상 업로드
-with open(VIDEO_PATH, "rb") as f:
-    r = requests.post("http://your-upload-url.com", files={"file": f})
