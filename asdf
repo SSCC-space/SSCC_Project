@@ -2,9 +2,12 @@ import requests
 import time
 import cv2
 import numpy as np
+from datetime import datetime
 
 url = 'http://114.71.48.94:80/uploadfile'
 filename = 'photo.jpg'
+ksize = 20              # 블러 처리에 사용할 커널 크기
+
 while True:
     cap = cv2.VideoCapture(0)
     if cap.isOpened():
@@ -12,6 +15,16 @@ while True:
             ret, frame = cap.read()
             if ret:
                 if cv2.waitKey(1) == -1:
+                    x,y,w,h = 515, 395, 100, 70 # 관심영역 선택
+                    roi = frame[y:y+h, x:x+w]   # 관심영역 지정
+                    roi = cv2.blur(roi, (ksize, ksize)) # 블러(모자이크) 처리
+                    frame[y:y+h, x:x+w] = roi   # 원본 이미지에 적용
+                    
+                    x,y,w,h = 462, 456, 40, 30 # 관심영역 선택
+                    roi = frame[y:y+h, x:x+w]   # 관심영역 지정
+                    roi = cv2.blur(roi, (ksize, ksize)) # 블러(모자이크) 처리
+                    frame[y:y+h, x:x+w] = roi   # 원본 이미지에 적용
+                    
                     fliped = cv2.flip(frame, -1)
                     cv2.imwrite('photo.jpg', fliped)  # 이미지 저장
                     break
@@ -26,8 +39,7 @@ while True:
 
     with open(filename, 'rb') as f:
         r = requests.post(url, files={'file': f})
-
-    print(r.text)
+        
+    print(datetime.now(),end=" :      ")
+    print(r.text,end="\n\n")
     time.sleep(0.3)
-
-
