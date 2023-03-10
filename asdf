@@ -8,14 +8,14 @@ url = 'http://114.71.48.94:80/uploadfile'
 filename = 'photo.jpg'
 ksize = 20              # 블러 처리에 사용할 커널 크기
 
-while True:
+def send_img():
     cap = cv2.VideoCapture(0)
     if cap.isOpened():
         while True:
             ret, frame = cap.read()
             if ret:
                 if cv2.waitKey(1) == -1:
-                    x,y,w,h = 515, 395, 100, 70 # 관심영역 선택
+                    x,y,w,h = 505, 375, 100, 70 # 관심영역 선택
                     roi = frame[y:y+h, x:x+w]   # 관심영역 지정
                     roi = cv2.blur(roi, (ksize, ksize)) # 블러(모자이크) 처리
                     frame[y:y+h, x:x+w] = roi   # 원본 이미지에 적용
@@ -40,6 +40,14 @@ while True:
     with open(filename, 'rb') as f:
         r = requests.post(url, files={'file': f})
         
-    print(datetime.now(),end=" :      ")
+    print(datetime.now(),end="      ")
     print(r.text,end="\n\n")
-    time.sleep(0.3)
+
+while True:
+    if datetime.now().second % 4 == 0:
+        try:
+            send_img()
+        except:
+            print("{0}      !Send Error!".format(datetime.now()), end = "\n\n")
+    time.sleep(1)
+
